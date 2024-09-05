@@ -2,32 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.gradient-home-page {
+  background: #fceabb;
+  background: linear-gradient(to right, #fceabb, #f8b500);
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.active-nav-menu {
+  position: absolute;
+  flex-direction: column;
+  gap: 0;
+  top: 90px;
+  text-align: start;
+  width: 100%;
+  transition: 0.7s ease-in-out;
+  background-color: #fceabbd6;
+  padding: 10px;
+  height: 100vh;
+  box-shadow: 3px 4px 34px #3333;
+  z-index: 1;
+  gap: 18px;
+  display: flex;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.active-nav-menu.active {
+  left: 0;
+  text-align: center;
+}
+.active-nav-menu li {
+  margin: 16px 0;
 }
