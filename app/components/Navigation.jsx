@@ -29,7 +29,7 @@ function Navigation() {
           <Link href="/refer">Refer</Link>
         </li>{" "}
         <li>
-          <Link href="/buy">
+          <Link href="/wallet">
             <Button>Buy Now</Button>
           </Link>
         </li>

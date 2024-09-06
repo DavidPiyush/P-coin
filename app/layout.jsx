@@ -43,11 +43,7 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`overflow-x-hidden ${poppins.className}`}>
-        <Header />
         {children}
-
-        <Footer />
-        <Copyright />
       </body>
     </html>
   );
