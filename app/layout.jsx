@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <link
           rel="apple-touch-icon"
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={poppins.className}>
+      <body className={`overflow-x-hidden ${poppins.className}`}>
         <Header />
         {children}
 

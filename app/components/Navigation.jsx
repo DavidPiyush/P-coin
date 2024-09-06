@@ -15,8 +15,8 @@ function Navigation() {
   return (
     <nav className="text-xl  ">
       <ul
-        className={`lg:gap-16 md:gap-10 items-center text-[#5b4406]  md:flex  ${
-          isOpen ? "active-nav-menu active" : "hidden"
+        className={`lg:gap-16 md:gap-10  text-[#5b4406]   active-nav-menu md:relative md:flex md:visible  md:translate-x-0 md:opacity-100 md:flex-row md:items-center md:h-0 md:top-0 md:pointer-events-auto ${
+          isOpen ? " active-el " : ""
         }`}
       >
         <li>

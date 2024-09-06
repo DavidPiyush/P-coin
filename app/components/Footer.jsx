@@ -5,8 +5,8 @@ import SocialMedia from "./SocialMedia";
 function Footer() {
   return (
     <footer className="border-t-2 border-yellow-300">
-      <div className="lg:max-w-7xl md:max-w-2xl max-w-md mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:grid-cols-3">
+      <div className="lg:max-w-7xl md:max-w-2xl  md:mx-auto  grid justify-center md:block">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-8 md:grid-cols-3 ">
           <article>
             <ul className="space-y-6">
               <li>

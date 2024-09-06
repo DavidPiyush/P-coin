@@ -4,8 +4,8 @@ import SocialMedia from "../components/SocialMedia";
 function page() {
   return (
     <section className="bg-[#fbe4a7] lg:h-screen">
-      <div className="container grid grid-cols-2 lg:pt-[90px] lg:max-w-7xl md:max-w-2xl max-w-md mx-auto items-center gap-8 py-24">
-        <article className="md:shrink-0">
+      <div className="grid grid-cols-1 lg:pt-[90px] lg:max-w-7xl md:max-w-2xl   items-center lg:gap-8 py-24 md:grid-cols-2 max-w-md gap-2 px-5 md:mx-auto">
+        <article className="md:shrink-0 ">
           <Image
             src="/about.png"
             alt="P-coin background image"
@@ -18,7 +18,9 @@ function page() {
           />
         </article>
         <article>
-          <h2 className="lg:text-5xl text-2xl md:text-3xl font-semibold text-sunrise mb-3">About us</h2>
+          <h2 className="lg:text-5xl text-2xl md:text-3xl font-semibold text-sunrise mb-3">
+            About us
+          </h2>
           <p className="mb-8 text-stone-500">Know about P-coin developer</p>
 
           <p className="lg:text-lg text-sunriseLight md:text-sm text-xs">

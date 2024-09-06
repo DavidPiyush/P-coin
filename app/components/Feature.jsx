@@ -2,11 +2,11 @@ import Image from "next/image";
 function Feature() {
   return (
     <section>
-      <div className="lg:max-w-7xl mx-auto md:max-w-2xl max-w-md">
+      <div className="lg:max-w-7xl md:mx-auto md:max-w-2xl grid justify-center md:block">
         <h3 className="mt-24 text-center text-xl text-sunriseLight">
           Featured by{" "}
         </h3>
-        <article className="flex justify-between mt-8 grayscale md:shrink-0 ">
+        <article className="flex justify-between mt-8 grayscale md:shrink-0 space-x-6 md:space-x-0">
           <Image
             src="/coinbase.svg"
             alt="coinbase wallet"
