@@ -3,12 +3,17 @@
 import { useEffect, useState } from "react";
 import SideBarBtn from "../components/SideBarBtn";
 import Aside from "./Aside";
+import { close, menu } from "@/utlis/svg";
+import AsideHeader from "./AsideHeader";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [innerWidth, setInnerWidth] = useState(0); // Initialize to 0 to avoid server-side issues
 
   useEffect(() => {
+    // Set the initial width
+    setInnerWidth(window.innerWidth);
+
     function handleResize() {
       setInnerWidth(window.innerWidth);
     }
@@ -19,37 +24,40 @@ function Sidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(innerWidth);
-
   function handleClose() {
     setIsOpen(false);
   }
 
   return (
-    <div className="bg-red-300">
-      {innerWidth < 1024 ? (
-        <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
-      ) : (
-        <Aside />
+    <div className="relative h-screen bg-red-950">
+      {innerWidth < 1024 && (
+        <>
+          <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
+          {isOpen && (
+            <div
+              onClick={handleClose}
+              className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm bg-black bg-opacity-30`}
+            ></div>
+          )}
+          {isOpen && <Aside isOpen={isOpen} />}
+        </>
       )}
-      <div
-        onClick={handleClose}
-        className="bg-red-950 h-[100px] p-4 sm:ml-64"
-      ></div>
+
+      {innerWidth >= 1024 && (
+        <><AsideHeader>
+        </AsideHeader><Aside isOpen={isOpen} /></>
+      )}
     </div>
   );
 }
 
 function MobileScreen({ isOpen, setIsOpen }) {
-  function handleClick() {
-    setIsOpen(true);
-  }
-
   return (
-    <div>
-      <SideBarBtn onClick={handleClick} />
-      {isOpen ? <Aside /> : ""}
-    </div>
+    <AsideHeader>
+      <SideBarBtn onClick={() => setIsOpen((prev) => !prev)}>
+        {isOpen ? close : menu}
+      </SideBarBtn>
+    </AsideHeader>
   );
 }
 
