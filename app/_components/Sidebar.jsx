@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SideBarBtn from "../components/SideBarBtn";
+import SideBarBtn from "./SideBarBtn";
 import Aside from "./Aside";
-import { close, menu } from "@/utlis/svg";
+import { close, menu } from "@/app/_utlis/svg";
 import AsideHeader from "./AsideHeader";
 
 function Sidebar() {
@@ -29,25 +29,29 @@ function Sidebar() {
   }
 
   return (
-    <div className="relative h-screen bg-red-950">
-      {innerWidth < 1024 && (
-        <>
-          <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
-          {isOpen && (
-            <div
-              onClick={handleClose}
-              className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm bg-black bg-opacity-30`}
-            ></div>
-          )}
-          {isOpen && <Aside isOpen={isOpen} />}
-        </>
-      )}
+    <section className="mt-[74px]">
+      <div className="relative  bg-red-950 ">
+        {innerWidth < 1024 && (
+          <>
+            <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
+            {isOpen && (
+              <div
+                onClick={handleClose}
+                className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm bg-black bg-opacity-30`}
+              ></div>
+            )}
+            {isOpen && <Aside isOpen={isOpen} setIsOpen={setIsOpen}/>}
+          </>
+        )}
 
-      {innerWidth >= 1024 && (
-        <><AsideHeader>
-        </AsideHeader><Aside isOpen={isOpen} /></>
-      )}
-    </div>
+        {innerWidth >= 1024 && (
+          <>
+            <AsideHeader></AsideHeader>
+            <Aside isOpen={isOpen} setIsOpen={setIsOpen} />
+          </>
+        )}
+      </div>
+    </section>
   );
 }
 

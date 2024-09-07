@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo.jpg";
 
-function Logo() {
+function Logo({ textColor, hidden }) {
   return (
-    <Link href="/" class="flex gap-4 items-center">
+    <Link href="/" class={`flex gap-4 items-center ${hidden}`}>
       <Image
         src={logo}
         height="60"
@@ -13,7 +13,9 @@ function Logo() {
         alt="P-coin logo"
         className="rounded-3xl"
       />
-      <span class="text-xl font-semibold text-primary-100 ">P-Coin</span>
+      <span class={`text-xl font-semibold text-primary-100 ${textColor}`}>
+        P-Coin
+      </span>
     </Link>
   );
 }

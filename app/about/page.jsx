@@ -1,8 +1,8 @@
 import Image from "next/image";
-import SocialMedia from "../components/SocialMedia";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Copyright from "../components/Copyright";
+import SocialMedia from "../_components/SocialMedia";
+import Header from "../_components/Header";
+import Footer from "../_components/Footer";
+import Copyright from "../_components/Copyright";
 
 function page() {
   return (
@@ -46,7 +46,7 @@ function page() {
         </div>
       </section>
 
-      <Footer  className ="border-0"/>
+      <Footer className="border-0" />
       <Copyright />
     </div>
   );

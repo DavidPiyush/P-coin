@@ -2,15 +2,25 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Button from "./Button";
 
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "About", path: "/about" },
+  { title: "Refer", path: "/Refer" },
+  
+];
+
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+
   function handleToggle(e) {
     console.log("open window");
     setIsOpen((isOpen) => !isOpen);
   }
+  const router = useRouter();
 
   return (
     <nav className="text-xl  ">
@@ -19,17 +29,26 @@ function Navigation() {
           isOpen ? " active-el " : ""
         }`}
       >
+        {navLinks.map(
+          (link) => (
+            console.log(router.pathname),
+            (
+              <li key={link.title}>
+                <Link
+                  href={link.path}
+                  passHref
+                  className={
+                    router.pathname === link.path ? "text-gray-900" : ""
+                  }
+                >
+                  {link.title}
+                </Link>
+              </li>
+            )
+          )
+        )}
         <li>
-          <Link href="/">Home</Link>
-        </li>{" "}
-        <li>
-          <Link href="/about">About</Link>
-        </li>{" "}
-        <li>
-          <Link href="/refer">Refer</Link>
-        </li>{" "}
-        <li>
-          <Link href="/wallet">
+          <Link href="/dashboard">
             <Button>Buy Now</Button>
           </Link>
         </li>

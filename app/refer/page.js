@@ -1,8 +1,8 @@
-import Copyright from "../components/Copyright";
-import DailyClaim from "../components/DailyClaim";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SocialMediaLink from "../components/SocialMediaLink";
+import Copyright from "../_components/Copyright";
+import DailyClaim from "../_components/DailyClaim";
+import Footer from "../_components/Footer";
+import Header from "../_components/Header";
+import SocialMediaLink from "../_components/SocialMediaLink";
 
 function page() {
   return (
