@@ -5,7 +5,7 @@ import Button from "./Button";
 function Form() {
   return (
     <section className="mb-24">
-      <div className="lg:max-w-7xl grid justify-center md:block md:max-w-2xl md:mx-auto ">
+      <div className="lg:max-w-7xl grid justify-center md:block md:max-w-2xl md:mx-auto max-w-xs mx-auto ">
         <h3 className="mt-24 text-center text-xl text-sunriseLight">
           Contact Us{" "}
         </h3>

@@ -15,6 +15,10 @@ module.exports = {
       textColor: {
         sunrise: "#5b4406",
         sunriseLight: "#7f6f53",
+        slateGray: "#2f4f4f",
+      },
+      colors: {
+        coolGray: "#e5e8eb",
       },
     },
     fontFamily: {

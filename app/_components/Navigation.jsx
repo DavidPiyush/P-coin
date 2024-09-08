@@ -9,8 +9,7 @@ import Button from "./Button";
 const navLinks = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
-  { title: "Refer", path: "/Refer" },
-  
+  { title: "Refer", path: "/refer" },
 ];
 
 function Navigation() {
@@ -48,9 +47,7 @@ function Navigation() {
           )
         )}
         <li>
-          <Link href="/dashboard">
-            <Button>Buy Now</Button>
-          </Link>
+          <Button href="/login">Buy Now</Button>
         </li>
       </ul>
 

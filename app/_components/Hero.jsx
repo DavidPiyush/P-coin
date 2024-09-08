@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "./Button";
+import heroBackground from "@/public/hero-background.png";
 
 function Hero() {
   return (
@@ -22,13 +23,9 @@ function Hero() {
         </div>
         <div className="w-full h-100 relative md:shrink-0 mt-6 md:mt-0">
           <Image
-            src="/hero-background.png"
+            src={heroBackground}
             alt="P-coin background image"
-            width={0}
-            height={0}
-            sizes="100vw"
             quality={100}
-            style={{ width: "100%", height: "auto" }}
           />
         </div>
       </div>

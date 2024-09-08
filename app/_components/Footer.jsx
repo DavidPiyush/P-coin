@@ -5,12 +5,12 @@ import SocialMedia from "./SocialMedia";
 function Footer({ className }) {
   return (
     <footer className={`border-t-2 border-yellow-300${className}`}>
-      <div className="lg:max-w-7xl md:max-w-2xl  md:mx-auto  grid justify-center md:block">
+      <div className="lg:max-w-7xl md:max-w-2xl  md:mx-auto  grid justify-center md:block max-w-xs mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-8 md:grid-cols-3 ">
           <article>
             <ul className="space-y-6">
               <li>
-                <Logo />
+                <Logo textColor='text-sunrise' />
               </li>
               <li>
                 <SocialMedia />

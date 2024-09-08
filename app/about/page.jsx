@@ -3,6 +3,11 @@ import SocialMedia from "../_components/SocialMedia";
 import Header from "../_components/Header";
 import Footer from "../_components/Footer";
 import Copyright from "../_components/Copyright";
+import about from "@/public/about.png";
+
+export const metadata = {
+  title: "About",
+};
 
 function page() {
   return (
@@ -12,13 +17,9 @@ function page() {
         <div className="grid grid-cols-1 lg:pt-[90px] lg:max-w-7xl md:max-w-2xl   items-center lg:gap-8 py-24 md:grid-cols-2 max-w-md gap-2 px-5 md:mx-auto">
           <article className="md:shrink-0 ">
             <Image
-              src="/about.png"
+              src={about}
               alt="P-coin background image"
-              width={0}
-              height={0}
-              sizes="100vw"
               quality={100}
-              style={{ width: "85%", height: "auto" }}
               className="rounded-full shadow-lg bg-[#349c47] "
             />
           </article>

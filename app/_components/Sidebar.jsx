@@ -5,10 +5,15 @@ import SideBarBtn from "./SideBarBtn";
 import Aside from "./Aside";
 import { close, menu } from "@/app/_utlis/svg";
 import AsideHeader from "./AsideHeader";
+import Logout from "./Logout";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [innerWidth, setInnerWidth] = useState(0); // Initialize to 0 to avoid server-side issues
+  const [isLogout, setIsLogout] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [innerWidth, setInnerWidth] = useState(0);
+
+  // Initialize to 0 to avoid server-side issues
 
   useEffect(() => {
     // Set the initial width
@@ -28,29 +33,56 @@ function Sidebar() {
     setIsOpen(false);
   }
 
-  return (
-    <section className="mt-[74px]">
-      <div className="relative  bg-red-950 ">
-        {innerWidth < 1024 && (
-          <>
-            <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
-            {isOpen && (
-              <div
-                onClick={handleClose}
-                className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm bg-black bg-opacity-30`}
-              ></div>
-            )}
-            {isOpen && <Aside isOpen={isOpen} setIsOpen={setIsOpen}/>}
-          </>
-        )}
+  function handleCloseModal() {
+    setIsLogout((isLogout) => !isLogout);
+    setOpenModal(false);
+  }
 
-        {innerWidth >= 1024 && (
-          <>
-            <AsideHeader></AsideHeader>
-            <Aside isOpen={isOpen} setIsOpen={setIsOpen} />
-          </>
-        )}
-      </div>
+  return (
+    <section
+      className={`mt-[74px] ${isLogout ? "flex justify-center" : ""}`}
+      id="sidebar"
+    >
+      {isLogout || openModal ? (
+        <Logout
+          setOpenModal={setOpenModal}
+          onCloseModal={handleCloseModal}
+
+          // Pass handleCloseModal as a prop
+        />
+      ) : (
+        <div className="relative  bg-red-950 ">
+          {innerWidth < 1024 && (
+            <>
+              <MobileScreen isOpen={isOpen} setIsOpen={setIsOpen} />
+              {isOpen && (
+                <div
+                  onClick={handleClose}
+                  className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm bg-black bg-opacity-30`}
+                ></div>
+              )}
+              {isOpen && (
+                <Aside
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  onClick={handleCloseModal}
+                />
+              )}
+            </>
+          )}
+
+          {innerWidth >= 1024 && (
+            <>
+              <AsideHeader></AsideHeader>
+              <Aside
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                onClick={handleCloseModal}
+              />
+            </>
+          )}
+        </div>
+      )}
     </section>
   );
 }
