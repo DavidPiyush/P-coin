@@ -2,6 +2,7 @@ import Image from "next/image";
 import Button from "../_components/Button";
 import logo from "@/public/logo.jpg";
 import walletLogo from "@/public/wallet-logo.png";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const metadata = {
   title: "Login",
@@ -24,12 +25,13 @@ function page() {
           Make Your first <br />
           <strong className="text-[#ec8d7d]">Money</strong> on the Internet
         </h1>
-        <Button
+        {/* <Button
           className="rounded-full lg:px-24 md:px-20 bg-[#e27360] hover:bg-[#ab3d2a] mt-4"
           href="/dashboard"
         >
           Connect to Wallet
-        </Button>
+        </Button> */}
+        <ConnectButton />
       </div>
     </section>
   );

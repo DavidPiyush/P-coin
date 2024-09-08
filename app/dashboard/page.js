@@ -54,5 +54,3 @@ function Page() {
     </section>
   );
 }
-
-export default Page;

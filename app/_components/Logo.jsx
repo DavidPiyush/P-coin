@@ -13,9 +13,7 @@ function Logo({ textColor, hidden }) {
         alt="P-coin logo"
         className="rounded-3xl"
       />
-      <span class={`text-xl font-semibold text-primary-100 ${textColor}`}>
-        P-Coin
-      </span>
+      <span class={`text-xl font-semibold  ${textColor}`}>P-Coin</span>
     </Link>
   );
 }
