@@ -1,69 +1,105 @@
 "use client";
 
-import React from "react";
+import ethereumSvg from "@/public/chain/ethereum.svg";
+import baseSvg from "@/public/chain/base.svg";
+import polygonSvg from "@/public/chain/polygon.svg";
+import arbitrumSvg from "@/public/chain/arbitrum.svg";
+import optimseSvg from "@/public/chain/optimse.svg";
+// import ethereum from "@/public/chain/etthereum.svg"
+const projectId = process.env.PROJECT_ID;
+// Rainbowkit import
+import "@rainbow-me/rainbowkit/styles.css";
 import {
   RainbowKitProvider,
-  getDefaultWallets,
   connectorsForWallets,
-  darkTheme
+  darkTheme,
 } from "@rainbow-me/rainbowkit";
+
+// reactquery
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// importing wallet
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
+  binanceWallet,
+  bitgetWallet,
+  rainbowWallet,
+  metaMaskWallet,
+  walletConnectWallet,
+  coinbaseWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonMumbai, sepolia, lineaTestnet } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
 
-const projectId = "c5c9628b6796c49ecc1237fe483250ee";
+import { http, createConfig, WagmiProvider } from "wagmi";
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  sepolia,
+} from "wagmi/chains";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [sepolia, lineaTestnet],
-  [publicProvider()]
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: "Popular",
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+    {
+      groupName: "More",
+      wallets: [
+        argentWallet,
+        trustWallet,
+        ledgerWallet,
+        binanceWallet,
+        bitgetWallet,
+      ],
+    },
+  ],
+  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" }
 );
 
-const { wallets } = getDefaultWallets({
+export const config = createConfig({
   appName: "RainbowKit demo",
   projectId,
-  chains,
-});
-
-const demoAppInfo = {
-  appName: "Rainbowkit Demo",
-};
-
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: "Other",
-    wallets: [
-      argentWallet({ projectId, chains }),
-      trustWallet({ projectId, chains }),
-      ledgerWallet({ projectId, chains }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
   connectors,
-  publicClient,
-  webSocketPublicClient,
+  chains: [
+    { ...mainnet, iconUrl: ethereumSvg },
+    { ...sepolia, iconUrl: ethereumSvg },
+    { ...polygon, iconUrl: polygonSvg },
+    { ...optimism, iconUrl: optimseSvg },
+    { ...arbitrum, iconUrl: arbitrumSvg },
+    { ...base, iconUrl: baseSvg },
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+    [polygon.id]: http(),
+    [optimism.id]: http(),
+    [arbitrum.id]: http(),
+    [base.id]: http(),
+  },
 });
 
+const queryClient = new QueryClient();
+// we can more wallet from here
+
+// wagmi import
 const Providers = ({ children }) => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        appInfo={demoAppInfo}
-        modalSize="wide"
-        theme={darkTheme()}
-      >
-        {children}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider modalSize="wide" chains theme={darkTheme()}>
+          {children}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 
